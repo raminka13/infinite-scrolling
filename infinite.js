@@ -23,7 +23,7 @@ const throttle = (callback, time) => {
 };
 
 const getRandomColor = () => {
-  const h = Math.floor(Math.random() * 360);
+  const h = Math.floor(Math.random() * 255);
 
   return `hsl(${h}deg, 90%, 85%)`;
 };
@@ -44,7 +44,7 @@ const addCards = (pageIndex) => {
 
   cardCountElem.innerHTML = endRange;
 
-  for (let i = startRange + 1; i <= endRange; i++) {
+  for (let i = startRange + 1; i <= endRange; i += 1) {
     createCard(i);
   }
 };
@@ -58,17 +58,13 @@ const handleInfiniteScroll = () => {
     }
 
     if (currentPage === pageCount) {
-      removeInfiniteScroll();
+      loader.remove();
+      window.removeEventListener('scroll', handleInfiniteScroll);
     }
   }, 1000);
 };
 
-const removeInfiniteScroll = () => {
-  loader.remove();
-  window.removeEventListener('scroll', handleInfiniteScroll);
-};
-
-window.onload = function () {
+window.onload = () => {
   addCards(currentPage);
 };
 
