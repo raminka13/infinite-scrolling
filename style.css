@@ -36,6 +36,18 @@ body {
   align-items: center;
 }
 
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+img {
+  margin: 5px;
+  max-width: 200px;
+  width: auto;
+  height: fit-content;
+}
+
 #loader {
   display: flex;
 }

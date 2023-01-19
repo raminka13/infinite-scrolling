@@ -11,6 +11,11 @@ const callback = (array) => {
     }
   });
 };
+const getRandomColor = () => {
+  const h = Math.floor(Math.random() * 255);
+
+  return `hsl(${h}deg, 90%, 85%)`;
+};
 
 const populateCards = (num) => {
   for (let i = 0; i < num; i++) {
@@ -18,6 +23,7 @@ const populateCards = (num) => {
     const p = document.createElement('p');
 
     div.classList.add('card');
+    div.style.backgroundColor = getRandomColor();
     p.textContent = 'Infinite scrolling card';
 
     div.appendChild(p);
