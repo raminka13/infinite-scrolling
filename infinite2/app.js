@@ -1,16 +1,6 @@
 const container = document.querySelector('.container');
 let lastCard = container.lastElementChild;
 
-const callback = (array) => {
-  array.forEach((card) => {
-    if (card.isIntersecting) {
-      populateCards(5);
-      observer.unobserve(lastCard);
-      lastCard = document.querySelector('.container').lastElementChild;
-      observer.observe(lastCard);
-    }
-  });
-};
 const getRandomColor = () => {
   const h = Math.floor(Math.random() * 255);
 
@@ -18,7 +8,7 @@ const getRandomColor = () => {
 };
 
 const populateCards = (num) => {
-  for (let i = 0; i < num; i++) {
+  for (let i = 0; i < num; i += 1) {
     const div = document.createElement('div');
     const p = document.createElement('p');
 
@@ -29,6 +19,17 @@ const populateCards = (num) => {
     div.appendChild(p);
     container.appendChild(div);
   }
+};
+
+const callback = (array) => {
+  array.forEach((card) => {
+    if (card.isIntersecting) {
+      populateCards(5);
+      observer.unobserve(lastCard);
+      lastCard = document.querySelector('.container').lastElementChild;
+      observer.observe(lastCard);
+    }
+  });
 };
 
 const observer = new IntersectionObserver(callback);
