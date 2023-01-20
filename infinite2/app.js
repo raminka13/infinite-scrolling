@@ -21,16 +21,14 @@ const populateCards = (num) => {
   }
 };
 
-const callback = (array) => {
-  array.forEach((card) => {
-    if (card.isIntersecting) {
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
       populateCards(5);
       observer.unobserve(lastCard);
       lastCard = document.querySelector('.container').lastElementChild;
       observer.observe(lastCard);
     }
   });
-};
-
-const observer = new IntersectionObserver(callback);
+});
 observer.observe(lastCard);
