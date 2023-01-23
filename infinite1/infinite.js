@@ -30,9 +30,12 @@ const getRandomColor = () => {
 
 const createCard = (index) => {
   const card = document.createElement('div');
+  const cardText = document.createElement('p');
   card.className = 'card';
-  card.innerHTML = index;
   card.style.backgroundColor = getRandomColor();
+  cardText.textContent = index;
+
+  card.appendChild(cardText);
   cardContainer.appendChild(card);
 };
 
@@ -61,7 +64,7 @@ const handleInfiniteScroll = () => {
       loader.remove();
       window.removeEventListener('scroll', handleInfiniteScroll);
     }
-  }, 1000);
+  }, (Math.floor(Math.random() * 333)));
 };
 
 window.onload = () => {
