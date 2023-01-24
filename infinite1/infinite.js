@@ -64,7 +64,7 @@ const handleInfiniteScroll = () => {
       loader.remove();
       window.removeEventListener('scroll', handleInfiniteScroll);
     }
-  }, (Math.floor(Math.random() * 333)));
+  }, (1000 / 60));
 };
 
 window.onload = () => {
